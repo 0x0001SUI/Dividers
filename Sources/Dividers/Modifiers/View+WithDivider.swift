@@ -16,7 +16,7 @@ extension View {
     public func divider<S>(
         at edge: Edge,
         style: S = .quaternary,
-        lineWidth: CGFloat = 1.0
+        lineWidth: CGFloat? = nil
     ) -> some View where S: ShapeStyle {
         modifier(WithDivider(
             at: edge,
@@ -32,9 +32,9 @@ extension View {
 private struct WithDivider<S>: ViewModifier where S: ShapeStyle {
     private var edge: Edge
     private var style: S
-    private var lineWidth: CGFloat
-    
-    init(at edge: Edge, style: S, lineWidth: CGFloat) {
+    private var lineWidth: CGFloat?
+
+    init(at edge: Edge, style: S, lineWidth: CGFloat?) {
         self.edge = edge
         self.style = style
         self.lineWidth = lineWidth
